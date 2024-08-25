@@ -1,0 +1,68 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diretórios de build
+dist
+build
+out-tsc
+
+# Arquivos de configuração específicos do ambiente
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependências
+node_modules
+jspm_packages
+
+# Arquivos de cache
+.npm
+.next
+.cache
+.nuxt
+bower_components
+
+# Cobertura de teste
+coverage
+.nyc_output
+
+# Arquivos gerados pelo editor
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos específicos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos específicos do editor
+.project
+.classpath
+.settings
+
+# Arquivos gerados pelo build do Docker
+Dockerfile.*
+
+# Arquivos de imagem do Docker
+*.tar
+*.gz
+
+# Arquivos de log do Docker
+*.log
+
+# Arquivos de configuração do Docker Compose
+docker-compose.override.yml
+
+# Arquivos de volume do Docker
+./volumes/*
+!./volumes/.gitkeep
