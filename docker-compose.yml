@@ -7,10 +7,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: cdSynthesis
+      MONGO_REPLICA_SET_NAME: rs0
     ports:
       - 27017:27017
     volumes:
       - data:/data/db
+    networks:
+      - production-network
 
   backend:
     build: .
@@ -18,6 +21,22 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb
-
+    networks:
+      - production-network
+    volumes:
+      - ./:/app
+    
+  frontend:
+    build: 
+      context: ../Task Manager Frontend # Diretório do Dockerfile do frontend
+    ports:
+      - "8080:8080" # Porta do frontend (host:container)
+    networks:
+      - production-network
 volumes:
   data:
+
+networks:
+  production-network:
+    driver: bridge
+

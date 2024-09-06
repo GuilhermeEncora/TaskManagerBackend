@@ -1,20 +1,26 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
+const { verifyToken } = require('./auth/auth'); // Importe as funções JWT
 
-app.get('/', (req, res) => {
-  res.send('Olá do Task Manager Backend!');
-});
+const router = express.Router();
 
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
-});
+// router.get('/tarefas', verifyToken, (req, res) => {
+//   // ... lógica para buscar tarefas do usuário autenticado (req.user)
+// });
+
+// module.exports = router;
+
+
+// app.get('/', (req, res) => {
+//   res.send('Olá do Task Manager Backend!');
+// });
 
 // Conecte ao MongoDB
-mongoose.connect('mongodb://root:cdSynthesis@localhost:27017/task-manager?authSource=admin', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect('mongodb://root:cdSynthesis@task-manager-mongodb:27017/task-manager?authSource=admin', {
 })
+
 .then(() => {
   console.log('Conectado ao MongoDB!');
 })
@@ -25,5 +31,5 @@ mongoose.connect('mongodb://root:cdSynthesis@localhost:27017/task-manager?authSo
 // Resto do seu código Express (rotas, middlewares, etc.)
 
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Seervidor rodando em http://localhost:${port}`);
 });

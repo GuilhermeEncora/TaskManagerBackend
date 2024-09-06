@@ -4,7 +4,7 @@
   "description": ".",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,13 @@
   },
   "homepage": "https://github.com/GuilhermeEncora/TaskManagerBackend#readme",
   "dependencies": {
+    "@prisma/client": "^5.18.0",
     "express": "^4.19.2",
-    "mongoose": "^8.5.4"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "prisma": "^5.18.0"
   }
 }

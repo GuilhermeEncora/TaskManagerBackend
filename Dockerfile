@@ -1,5 +1,5 @@
-# Define a imagem base Node.js 16
-FROM node:16-alpine
+# Define a imagem base Node.js 18
+FROM node:18
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["npm", "start"]
+CMD ["npm","run","start"]
