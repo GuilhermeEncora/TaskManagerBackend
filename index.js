@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 const { verifyToken } = require('./auth/auth'); // Importe as funções JWT
+const teste = require('./controllers/index.js');
 
 const router = express.Router();
 
@@ -19,9 +20,7 @@ const router = express.Router();
 
 // Conecte ao MongoDB
 mongoose.connect('mongodb://root:cdSynthesis@task-manager-mongodb:27017/task-manager?authSource=admin', {
-})
-
-.then(() => {
+}).then(() => {
   console.log('Conectado ao MongoDB!');
 })
 .catch((error) => {
@@ -32,4 +31,6 @@ mongoose.connect('mongodb://root:cdSynthesis@task-manager-mongodb:27017/task-man
 
 app.listen(port, () => {
   console.log(`Seervidor rodando em http://localhost:${port}`);
+
+  const teste = teste.startServerAndTest();
 });
