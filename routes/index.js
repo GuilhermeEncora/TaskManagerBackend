@@ -6,10 +6,10 @@ const app = express();
 // ... other middleware ...
 
 // Mount user routes at '/users' path
-app.use('/users', userRoutes);
+app.use('/', userRoutes);
 
 // ... other routes ...
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+module.exports = routes;
+
+// ... other code 

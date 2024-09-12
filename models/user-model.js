@@ -35,6 +35,45 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
+userSchema.statics.criptografaSenha = async function (senha) {
+    try {
+        const saltRounds = 10; // Adjust as needed
+        const hashedPassword = await bcrypt.hash(senha, saltRounds);
+        return hashedPassword;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+userSchema.statics.findByEmail = async function (email) {
+    try {
+        const user = await this.findOne({ email });
+        return user;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+userSchema.statics.findByIdAndValidateToken = async function (id, token) {
+    try {
+        const user = await this.findById(id);
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        if (user.last_token !== token) {
+            throw new Error('Invalid token');
+        }
+        return user;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+
 // criando collection 
 const users = mongoose.model('users', userSchema);
 

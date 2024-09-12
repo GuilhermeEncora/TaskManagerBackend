@@ -2,12 +2,13 @@
 const express = require('express');
 const userController = require('./user-controller');
 const taskController = require('./task-controller');
+const mongoDb = require('./../configs/database');
 const axios = require('axios');
 
 const app = express();
 app.use(express.json()); // Middleware para parsear JSON
 
-const port = 3000;
+const port = process.env.PORT || 6000;
 
 // Rotas de Usuário
 app.post('/users', (req, res) => userController.createUser(req, res));
@@ -27,7 +28,7 @@ app.post('/users', (req, res) => userController.createUser(req, res));
 const startServerAndTest = async () => {
     app.listen(port, async () => {
         console.log(`Server listening on port ${port}`);
-
+        await mongoDb();
         const userData = {
             "nome": "Exemplo de Usuário",
             "email": "exemplo@email.com",
@@ -45,4 +46,4 @@ const startServerAndTest = async () => {
     });
 };
 
-module.exports = startServerAndTest;
+startServerAndTest();

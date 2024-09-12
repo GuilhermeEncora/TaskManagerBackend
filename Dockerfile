@@ -16,5 +16,8 @@ COPY . .
 # Define a porta que a aplicação irá escutar
 EXPOSE 3000
 
+EXPOSE 6000
+
 # Comando para iniciar a aplicação
 CMD ["npm","run","start"]
+#CMD ["node", "./controllers/index.js"]

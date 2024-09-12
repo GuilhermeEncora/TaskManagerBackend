@@ -1,25 +1,22 @@
 const express = require('express');
-const userController = require('./user-controller'); // Adjust path if needed
-const authMiddleware = require('../middlewares/auth-middleware'); // Adjust path if needed
+const userController = require('./../controllers/user-controller'); // Adjust path if needed
+const middleware = require('../middlewares/auth-middleware'); // Adjust path if needed
 
 const router = express.Router();
 
 // Create a new user (public route)
-router.post('/', userController.createUser);
-
-// Protect all routes below with authMiddleware
-//router.use(authMiddleware);
-
-// Get all users (protected route)
-router.get('/', userController.getAllUsers);
+router.post('/api/auth/signup', userController.createUser);
 
 // Get a single user (protected route)
-router.get('/:id', userController.getUser);
+router.post('/api/auth/login/', userController.getUser);
+
+// Protect all routes below with authMiddleware
+router.use(middleware);
 
 // Update a user (protected route)
-router.put('/:id', userController.updateUser);
+router.post('/api/auth/logout/', userController.updateUser);
 
 // Delete a user (protected route)
-router.delete('/:id', userController.deleteUser);
+//router.delete('/:id', userController.deleteUser);
 
 module.exports = router;
